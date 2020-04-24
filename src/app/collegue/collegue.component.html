@@ -1,11 +1,4 @@
 
-<!-- Header -->
-<header class="bg-primary text-center py-5 mb-4">
-    <div class="container">
-      <h1 class="font-weight-light text-white">Les collègues de l'espace</h1>
-    </div>
-  </header>
-
   <!-- Page Content -->
   <div class="container">
     <div class="row">
@@ -13,25 +6,28 @@
       <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-0 shadow">
           <img src= {{col.photoUrl}} class="card-img-top" alt="...">
-          <div class="card-body text-center">
+          <div class="card-body text-left">
             <h5 class="card-title mb-0">Matricule : {{col.matricule}}</h5>
-            <h2 class="card-title mb-0">Nom : <b>{{col.nom}}</b></h2>
+            <h2 class="card-title mb-0">Nom : <b>{{col.nom | uppercase}}</b></h2>
             <h2 class="card-title mb-0">Prénom : {{col.prenoms}}</h2>
             <h5 class="card-title mb-0">mail : {{col.email}}</h5>
-            <h5 class="card-title mb-0">Date de naissance : {{col.dateDeNaissance.toDateString()}}</h5>
-            <div class="card-text text-black-50">Le patron</div>
+            <h5 class="card-title mb-0">Date de naissance : {{col.dateDeNaissance | date : 'dd/MM/yyyy'}}</h5>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
 
-      <div class=" offset-4 col-4">
+      <div class=" offset-3 col-3">
           <a (click)="nouveauCollegue()" href="#">Créer un nouveau collègue</a>
       </div>
-      <div class="col-4">
+      <div class="col-3">
           <button class="btn btn-primary" (click)="modifier()">Modifier</button>
       </div>
 
+      <div class="col-3" *ngIf="mod ==true">
+         <button class="btn btn-primary" (click)="validation()">Valider</button>
+    </div>
   </div>
 </div>
+
