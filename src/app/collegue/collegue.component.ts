@@ -1,21 +1,25 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from './../models/Collegues';
 
+
 @Component({
   selector: 'app-collegue',
   templateUrl: './collegue.component.html',
   styleUrls: ['./collegue.component.css']
 })
 export class CollegueComponent implements OnInit {
-public mod : boolean;
-@Input() col:Collegue;
+public mod: boolean;
+public valid: boolean;
+@Input() col: Collegue;
   constructor() {
     this.mod = false;
+    this.valid = false
   }
 
   modifier(){
     console.log('Modification du collègue');
     this.mod = true;
+
   }
 
   nouveauCollegue(){
@@ -25,6 +29,7 @@ public mod : boolean;
 
   validation(){
     this.mod = false;
+
   }
   ngOnInit(): void {
   }

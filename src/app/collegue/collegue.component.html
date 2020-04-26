@@ -21,7 +21,7 @@
       <div class=" offset-3 col-3">
           <a (click)="nouveauCollegue()" href="#">Créer un nouveau collègue</a>
       </div>
-      <div class="col-3">
+      <div class="col-3" >
           <button class="btn btn-primary" (click)="modifier()">Modifier</button>
       </div>
 
@@ -30,4 +30,19 @@
     </div>
   </div>
 </div>
-
+<div *ngIf="mod == false; else elseBlock"></div>
+<ng-template #elseBlock>
+  <form>
+    <div class="form-group row">
+      <label for="mail" class="col-1 col-form-label">Email </label>
+      <div class = "offset-1 col-4">
+       <input class="form-control" type="email" id="mail">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="url" class="col-2 col-form-label">Photo URL </label>
+      <div class = "col-4">
+        <input class = "form-control" type="text" id="url">
+      </div>
+    </div>
+  </form>
