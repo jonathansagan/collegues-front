@@ -1,2 +1,3 @@
-import { Recherche } from './../models/Recherches';
-export let matriculeMock = new Recherche ([]);
+
+export const matriculeMock = [
+  'mat 1', 'mat 2'];

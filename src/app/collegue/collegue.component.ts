@@ -9,11 +9,11 @@ import { Collegue } from './../models/Collegues';
 })
 export class CollegueComponent implements OnInit {
 public mod: boolean;
-public valid: boolean;
+
 @Input() col: Collegue;
   constructor() {
     this.mod = false;
-    this.valid = false
+
   }
 
   modifier(){

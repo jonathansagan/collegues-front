@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Recherche } from './../models/Recherches';
+import { Component, OnInit } from '@angular/core';
+import {matriculeMock} from '../mock/matricules.mock';
+import {DataService} from '../services/data.service';
 
 @Component({
   selector: 'app-recherche-par-nom',
@@ -7,17 +8,18 @@ import { Recherche } from './../models/Recherches';
   styleUrls: ['./recherche-par-nom.component.css']
 })
 export class RechercheParNomComponent implements OnInit {
+
+  matricules = [];
+  constructor(private dataService: DataService) {
+  }
+
   search = false;
 
-  @Input() rech: Recherche;
-
-  constructor() { }
-
   ngOnInit(): void {
+    this.matricules = this.dataService.rechercherParNom('dark');
   }
 
   rechercher(){
     this.search = true;
   }
-
 }
