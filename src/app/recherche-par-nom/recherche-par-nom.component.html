@@ -4,13 +4,13 @@
     <div class = "col-5 col-form-label">
      <input class="form-control" type="text" id="texte">
     </div>
-    <div class="col-4 col-form-label">
-      <button type="button" class="btn-primary form-control" (click)="rechercher()">
+    <div class="col-4 col-form-label" id="id_recherche" #recherche>
+      <button type="button" class="btn-primary form-control" (click)="rechercher(recherche.value)">
         Recherche
       </button>
     </div>
     <ng-container *ngIf="search === true">
-      <li class ="list-group" *ngFor="let m of matricules">
+      <li class ="list-group" *ngFor="let m of listeMatricules">
         <p class = "ml-5 mt-5"> {{m}}</p>
       </li>
     </ng-container>

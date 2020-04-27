@@ -9,17 +9,19 @@ import {DataService} from '../services/data.service';
 })
 export class RechercheParNomComponent implements OnInit {
 
-  matricules = [];
+  listeMatricules = matriculeMock;
   constructor(private dataService: DataService) {
   }
 
   search = false;
 
   ngOnInit(): void {
-    this.matricules = this.dataService.rechercherParNom('dark');
   }
 
-  rechercher(){
-    this.search = true;
+  rechercher(nomSaisi: string){
+    this.dataService.rechercherParNom(nomSaisi)
+      .subscribe(
+        mats => this.listeMatricules = mats,
+        err => {console.log('erreur : recommencez ');});
   }
 }
