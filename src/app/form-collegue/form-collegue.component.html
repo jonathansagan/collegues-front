@@ -1,0 +1,24 @@
+<form>
+  {{colSaisi | json}}
+  <div class = "col-4">
+<label for ="nom">Nom : </label>
+<input id = "nom" type = "text" name = "nom"[(ngModel)]="colSaisi.nom">
+<br>
+<label for ="prenom">Prénom : </label>
+<input id = "prenom" type = "text" name = "prenom" [(ngModel)]="colSaisi.prenoms">
+<br>
+<label for ="DateDeNaissance">Date de naissance : </label>
+<input id = "DateDeNaissance" type = "text" name = "DateDeNaissance" [(ngModel)]="colSaisi.dateDeNaissance">
+<br>
+<label for ="email">Email : </label>
+<input id = "email" type = "text" name = "email" [(ngModel)]="colSaisi.email">
+<br>
+<label for ="photoUrl">Url de la photo : </label>
+<input id = "photoUrl" type = "text" name = "photoUrl" [(ngModel)]="colSaisi.photoUrl">
+<br>
+<button type="button" class="btn-success form-control" (click)="creer()">
+  Créer
+</button>
+</div>
+</form>
+
