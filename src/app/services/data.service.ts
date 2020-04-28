@@ -1,24 +1,37 @@
 import { Injectable } from '@angular/core';
 import { matriculeMock } from '../mock/matricules.mock';
 import { collegueMock } from '../mock/collegues.mock';
-import {Collegue} from '../models/Collegues';
+import { Collegue } from '../models/Collegues';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
+  private subCollegueSelectionne = new Subject<Collegue>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-
-  rechercherParNom(nom: string): Observable <string[]> {
-   /*  return matriculeMock; */
-    return this.http.get<string[]>(`https://digicappi.herokuapp.com/collegues?nom=${nom}`);
+  rechercherParNom(nom: string): Observable<string[]> {
+    /*  return matriculeMock; */
+    return this.http.get<string[]>(
+      `https://digicapi.herokuapp.com/collegues?nom=${nom}`
+    );
   }
 
-    recupererCollegueCourant(): Collegue {
-    return collegueMock;
-    }
+  recupererCollegueCourant(): Observable<Collegue> {
+    /* return collegueMock; */
+    return this.subCollegueSelectionne.asObservable();
+  }
+
+  selectCollegueParMatricule(matricule: string): Observable<Collegue> {
+    const obsCollegue = this.http.get<Collegue>(
+      `https://digicapi.herokuapp.com/collegues/${matricule}`
+    );
+    obsCollegue.subscribe((collegue) =>
+      this.subCollegueSelectionne.next(collegue)
+    );
+    return obsCollegue;
+  }
 }

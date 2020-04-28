@@ -2,16 +2,18 @@
   <div class="form-group row">
     <label for="texte" class="col-3 row-5 col-form-label">Recherche par nom </label>
     <div class = "col-5 col-form-label">
-     <input class="form-control" type="text" id="texte">
+     <input class="form-control" type="text" id="texte" #recherche>
     </div>
-    <div class="col-4 col-form-label" id="id_recherche" #recherche>
-      <button type="button" class="btn-primary form-control" (click)="rechercher(recherche.value)">
+    <div class="col-4 col-form-label" id="id_recherche">
+      <button type="button" class="btn-primary form-control" (click)="rechercherParNom(recherche.value)">
         Recherche
       </button>
     </div>
-    <ng-container *ngIf="search === true">
+    <ng-container *ngIf="search===true">
       <li class ="list-group" *ngFor="let m of listeMatricules">
+        <button type="button" class="btn-link form-control" (click)="selectMatricule(m)">
         <p class = "ml-5 mt-5"> {{m}}</p>
+        </button>
       </li>
     </ng-container>
 

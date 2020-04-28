@@ -9,7 +9,7 @@ import {DataService} from '../services/data.service';
 })
 export class RechercheParNomComponent implements OnInit {
 
-  listeMatricules = matriculeMock;
+  listeMatricules = [];
   constructor(private dataService: DataService) {
   }
 
@@ -18,10 +18,19 @@ export class RechercheParNomComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  rechercher(nomSaisi: string){
+  rechercherParNom(nomSaisi: string){
     this.dataService.rechercherParNom(nomSaisi)
       .subscribe(
-        mats => this.listeMatricules = mats,
-        err => {console.log('erreur : recommencez ');});
+        liste => this.listeMatricules = liste,
+        err => {console.log('erreur : recommencez '); });
+        this.search=true;
   }
+
+  selectMatricule (matricule : string){
+    this.dataService.selectCollegueParMatricule (matricule)
+    .subscribe (
+    col=>{},
+    err => {console.log('erreur : recommencez '); });
+  }
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from './../models/Collegues';
+import {DataService} from '../services/data.service';
 
 
 @Component({
@@ -10,8 +11,9 @@ import { Collegue } from './../models/Collegues';
 export class CollegueComponent implements OnInit {
 public mod: boolean;
 
+
 @Input() col: Collegue;
-  constructor() {
+  constructor(private dataService: DataService) {
     this.mod = false;
 
   }
@@ -29,8 +31,14 @@ public mod: boolean;
 
   validation(){
     this.mod = false;
-
   }
+
+  recupererCollegueCourant (matricule : string){
+    this.dataService.recupererCollegueCourant().subscribe(
+      collegue => this.col = collegue,
+      err => {console.log('erreur : recommencez '); });
+  }
+
   ngOnInit(): void {
   }
 
