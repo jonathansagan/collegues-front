@@ -18,19 +18,20 @@ export class RechercheParNomComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  rechercherParNom(nomSaisi: string){
-    this.dataService.rechercherParNom(nomSaisi)
+  rechercher(nom: string) {
+    this.search = true;
+    console.log('Recherche d\'un collègue par nom');
+    this.dataService.rechercherParNom(nom)
       .subscribe(
-        liste => this.listeMatricules = liste,
-        err => {console.log('erreur : recommencez '); });
-        this.search=true;
+        listMat => this.listeMatricules = listMat,
+        err => console.log('Pas de résultat. Veuillez entrer un autre nom'));
   }
 
-  selectMatricule (matricule : string){
-    this.dataService.selectCollegueParMatricule (matricule)
-    .subscribe (
-    col=>{},
-    err => {console.log('erreur : recommencez '); });
+
+  selectMatricule(matricule: string) {
+    this.dataService.selectCollegueParMatricule(matricule)
+      .subscribe(col => {},
+        err => console.log('Aucun collègue trouvé pour le matricule fourni'));
   }
 
 }

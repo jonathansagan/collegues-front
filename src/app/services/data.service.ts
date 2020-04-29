@@ -15,9 +15,7 @@ export class DataService {
 
   rechercherParNom(nom: string): Observable<string[]> {
     /*  return matriculeMock; */
-    return this.http.get<string[]>(
-      `https://digicapi.herokuapp.com/collegues?nom=${nom}`
-    );
+    return this.http.get<string[]>(`https://digicapi.herokuapp.com/collegues?nom=${nom}`);
   }
 
   recupererCollegueCourant(): Observable<Collegue> {
