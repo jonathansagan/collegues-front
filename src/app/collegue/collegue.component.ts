@@ -43,7 +43,8 @@ public creation: boolean;
   }
 
   recupererCollegueCourant (matricule : string){
-    this.dataService.recupererCollegueCourant().subscribe(
+    this.dataService.recupererCollegueCourant()
+    .subscribe(
       collegue => this.col = collegue,
       err => {console.log('erreur : recommencez '); });
   }

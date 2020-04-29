@@ -34,4 +34,15 @@ export class DataService {
     );
     return obsCollegue;
   }
+
+  creerCollegue(nom: string, prenoms: string, email: string, dateDeNaissance: Date, photoUrl: string): Observable<Collegue> {
+    return this.http.post<Collegue>(`https://digicapi.herokuapp.com/collegues/`,
+    {
+      nom: `${nom}`,
+      prenoms: `${prenoms}`,
+      email: `${email}`,
+      dateDeNaissance: `${dateDeNaissance}`,
+      photoUrl: `${photoUrl}`
+    });
+}
 }

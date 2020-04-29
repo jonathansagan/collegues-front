@@ -1,32 +1,32 @@
 <form #etatForm = "ngForm">
-  {{colSaisi | json}}
-  <div class = "col-4">
+  {{colSaisie | json}}
+  <div class = "col-5">
 <label for ="nom"><b>Nom :</b> </label>
-<input id = "nom" type = "text" name = "nom"[(ngModel)]="colSaisi.nom" #etatNom = "ngModel" required>
+<input id = "nom" type = "text" name = "nom"[(ngModel)]="colSaisie.nom" #etatNom = "ngModel" required>
 <div *ngIf = "etatNom.dirty && etatNom.invalid">
   Le nom est obligatoire!
 </div>
 <br>
 <label for ="prenom"><b>Prénom : </b></label>
-<input id = "prenom" type = "text" name = "prenom" [(ngModel)]="colSaisi.prenoms" #etatPrenom = "ngModel" required>
+<input id = "prenom" type = "text" name = "prenom" [(ngModel)]="colSaisie.prenoms" #etatPrenom = "ngModel" required>
 <div *ngIf = "etatPrenom.dirty && etatPrenom.invalid">
   Le prénom est obligatoire!
 </div>
 <br>
 <label for ="DateDeNaissance"><b>Date de naissance : </b></label>
-<input id = "DateDeNaissance" type = "text" name = "DateDeNaissance" [(ngModel)]="colSaisi.dateDeNaissance"#etatNaissance = "ngModel" required>
+<input id = "DateDeNaissance" type = "text" name = "DateDeNaissance" [(ngModel)]="colSaisie.dateDeNaissance"#etatNaissance = "ngModel" required>
 <div *ngIf = "etatNaissance.dirty && etatNaissance.invalid">
   La date de naissance est obligatoire!
 </div>
 <br>
 <label for ="email"><b>Email : </b></label>
-<input id = "email" type = "text" name = "email" [(ngModel)]="colSaisi.email" #etatMail = "ngModel" required>
+<input id = "email" type = "text" name = "email" [(ngModel)]="colSaisie.email" #etatMail = "ngModel" required>
 <div *ngIf = "etatMail.dirty && etatMail.invalid">
   L'E-mail est obligatoire!
 </div>
 <br>
 <label for ="photoUrl"><b>Url de la photo : </b></label>
-<input id = "photoUrl" type = "text" name = "photoUrl" [(ngModel)]="colSaisi.photoUrl"#etatPhoto = "ngModel" required minlength="7">
+<input id = "photoUrl" type = "text" name = "photoUrl" [(ngModel)]="colSaisie.photoUrl"#etatPhoto = "ngModel" required minlength="7">
 <div *ngIf="etatPhoto.dirty && etatPhoto.invalid">
   l'URL doit être composée d'au moins 7 caractères
 </div>
