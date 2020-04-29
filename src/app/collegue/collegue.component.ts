@@ -10,11 +10,15 @@ import {DataService} from '../services/data.service';
 })
 export class CollegueComponent implements OnInit {
 public mod: boolean;
+public creation: boolean;
+
 
 
 @Input() col: Collegue;
   constructor(private dataService: DataService) {
     this.mod = false;
+    this.creation = false;
+
 
   }
 
@@ -22,15 +26,20 @@ public mod: boolean;
     console.log('Modification du collègue');
     this.mod = true;
 
+
+
   }
 
   nouveauCollegue(){
     console.log('Création d’un nouveau collègue');
     this.mod = false;
+    this.creation = true;
+
   }
 
   validation(){
     this.mod = false;
+
   }
 
   recupererCollegueCourant (matricule : string){
