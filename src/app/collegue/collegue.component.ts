@@ -42,7 +42,7 @@ public creation: boolean;
 
   }
 
-  recupererCollegueCourant (matricule : string){
+  recupererCollegueCourant(matricule: string){
     this.dataService.recupererCollegueCourant()
     .subscribe(
       collegue => this.col = collegue,
